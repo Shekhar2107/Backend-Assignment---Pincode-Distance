@@ -1,7 +1,7 @@
 # 🚀 Backend Assignment - Pincode Distance API
 
 ## 📌 Overview
-This project is a **REST API** that calculates the **distance and duration** between two Indian pin codes using the **Google Maps API**. The API is designed to be **REST-compliant**, supports **caching**, and stores the distance and duration data in a **database**.
+This project is a **REST API** that calculates the **distance and duration** between two pin codes using the **Google Maps API**. The API is designed to be **REST-compliant**, supports **caching**, and stores the distance and duration data in a **database**.
 
 ### 🛠 Features
 ✅ Fetches **route, distance, and duration** between two pin codes.  
@@ -104,12 +104,8 @@ mvn test
 🔹 **TDD approach** - Uses JUnit to ensure robust testing.  
 
 ---
-
-## 📜 License
-This project is licensed under the **MIT License**.
-
 ---
 
 ## ✨ Contributors
 👤 **Shekhar**  
-📧 Contact: your-email@example.com
+📧 Contact: shekharsuman0397@gmail.com
