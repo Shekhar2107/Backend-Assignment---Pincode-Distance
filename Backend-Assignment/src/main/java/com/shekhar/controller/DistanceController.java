@@ -1,20 +1,21 @@
 package com.shekhar.controller;
 
 import com.shekhar.service.DistanceService;
+import com.shekhar.dto.DistanceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/distance")
+@RequestMapping("/api")  // Base URL
 public class DistanceController {
 
     @Autowired
     private DistanceService distanceService;
 
-    @GetMapping
-    public String getDistance(
-            @RequestParam String origin, 
-            @RequestParam String destination) {
-        return distanceService.getDistance(origin, destination);
+    @PostMapping("/calculate-distance")
+    public ResponseEntity<String> calculateDistance(@RequestBody DistanceRequest request) {
+        String response = distanceService.getDistance(request.getOriginPincode(), request.getDestinationPincode());
+        return ResponseEntity.ok(response);
     }
 }
