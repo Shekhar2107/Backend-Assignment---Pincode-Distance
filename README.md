@@ -32,8 +32,8 @@ POST
 http://localhost:8080/api/calculate-distance
 ## json body 
 {
-  "originPincode": "560019",
-  "destinationPincode": "560064"
+  "originPincode": "141106",
+  "destinationPincode": "110060"
 }
 
 ```
