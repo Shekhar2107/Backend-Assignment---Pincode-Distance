@@ -13,7 +13,7 @@ This project is a **REST API** that calculates the **distance and duration** bet
 ---
 
 ## 🔗 API Integration
-The API integrates with **Google Maps Distance Matrix API** to calculate travel duration and distance between pin codes.
+The API integrates with **geocoding api and routes api** to calculate travel duration and distance between pin codes.
 
 ### **🛠 API Workflow**
 1️⃣ **First Call**: API fetches data from Google Maps and stores it in the cache & database.  
@@ -24,11 +24,18 @@ The API integrates with **Google Maps Distance Matrix API** to calculate travel 
 ## 📤 API Endpoints
 ### 1️⃣ **Fetch Distance & Duration**
 ```
-GET /distance?fromPincode={fromPincode}&toPincode={toPincode}
+POST /distance?fromPincode={fromPincode}&toPincode={toPincode}
 ```
 #### 🔹 Request Example:
 ```sh
-GET /distance?fromPincode=141106&toPincode=110060
+##post
+http://localhost:8080/api/calculate-distance
+## json body 
+{
+  "originPincode": "560019",
+  "destinationPincode": "560064"
+}
+
 ```
 #### 🔹 Response Example:
 ```json
@@ -63,7 +70,7 @@ GET /distance?fromPincode=141106&toPincode=110060
 ## ⚙️ Tech Stack
 - **Java 21**
 - **Spring Boot** (REST API)
-- **Google Maps API** (Distance Matrix)
+- **Google Maps API** (Geocoding and Routes api)
 - **H2 Database** (Testing) / MySQL (Production)
 - **JUnit** (Testing)
 - **Postman** (API Testing)
