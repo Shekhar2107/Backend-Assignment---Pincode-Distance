@@ -24,7 +24,7 @@ The API integrates with **geocoding api and routes api** to calculate travel dur
 ## 📤 API Endpoints
 ### 1️⃣ **Fetch Distance & Duration**
 ```
-POST /distance?fromPincode={fromPincode}&toPincode={toPincode}
+POST
 ```
 #### 🔹 Request Example:
 ```sh
