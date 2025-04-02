@@ -1,31 +1,53 @@
 package com.shekhar.controller;
 
 import com.shekhar.service.DistanceService;
-import com.shekhar.dto.DistanceRequest;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * Controller for handling distance calculation requests.
+ */
 @RestController
-@RequestMapping("/api")  // Base URL
-@RequiredArgsConstructor
+@RequestMapping("/api/distance")
 public class DistanceController {
 
     private final DistanceService distanceService;
 
-    @PostMapping("/calculate-distance")
-    public ResponseEntity<Map<String, Object>> calculateDistance(@RequestBody DistanceRequest request) {
-        System.out.println("📩 Received Distance Request: " + request);
+    public DistanceController(DistanceService distanceService) {
+        this.distanceService = distanceService;
+    }
 
-        String responseJson = distanceService.getDistance(request.getOriginPincode(), request.getDestinationPincode());
+    /**
+     * Calculates and retrieves the distance between two pincodes using POST.
+     *
+     * @param request The request containing origin and destination pincodes.
+     * @return JSON response containing distances and durations.
+     */
+    @PostMapping("/calculate")
+    public ResponseEntity<String> calculateDistance(@RequestBody DistanceRequest request) {
+        String result = distanceService.getDistance(request.getOriginPincode(), request.getDestinationPincode());
+        return ResponseEntity.ok(result);
+    }
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("status", "success");
-        response.put("data", responseJson);
+    // Inner class for request body
+    public static class DistanceRequest {
+        private String originPincode;
+        private String destinationPincode;
 
-        return ResponseEntity.ok(response);
+        public String getOriginPincode() {
+            return originPincode;
+        }
+
+        public void setOriginPincode(String originPincode) {
+            this.originPincode = originPincode;
+        }
+
+        public String getDestinationPincode() {
+            return destinationPincode;
+        }
+
+        public void setDestinationPincode(String destinationPincode) {
+            this.destinationPincode = destinationPincode;
+        }
     }
 }
